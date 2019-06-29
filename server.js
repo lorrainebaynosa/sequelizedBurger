@@ -52,7 +52,7 @@ app.set("view engine", "handlebars");
 
 // Routes
 // =============================================================
-var routes = require("./controllers/catsController.js");
+var routes = require("./controllers/burgers_controllers");
 
 app.use(routes);
 

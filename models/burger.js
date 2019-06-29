@@ -3,6 +3,7 @@ module.exports = (sequelize, DataTypes) => {
   const Burger = sequelize.define('Burger', {
     id: {
       type: DataTypes.INTEGER,
+      primaryKey: true,
       validate: {
         allowNull: false
         }
