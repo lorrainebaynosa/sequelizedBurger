@@ -1,57 +1,40 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-12 text-center" id="header" <img src="/assets/images.burger.jpg" alt="burger" />
-    <h1>Eat-Da-Burger!</h1>
-  </div>
-  <div class="col-md-6 text-center" class="eatme">
-    <div class="row">
+    <div class="col-md-12 text-center" id="header">
+      <img src="assets/images/burger.png" alt="burger">
+      <h1>Eat-Da-Burger!</h1>
+    </div>
+    <div class="col-md-6 text-center" class="eatme">
+      <div class="row">
+        {{#each burgers}}
+        {{#unless devoured}}
+        <div class="col-md-9 text-center">
+          <pre>{{id}}. {{burger_name}}
+        </pre>
+        </div>
+        {{> burgers/burger-devour id=id devoured=devoured}}
+        {{/unless}}
+        {{/each}}
+      </div>
+    </div>
+    <div class="col-md-6 text=center" class="eatme">
       {{#each burgers}}
-      {{#unless devoured}}
-      {{> burgers/burger-block devoured=true}}
-      <div class>""col-md-9 text-center">
-        <pre>{{id}}. {{burger_name}}
+      {{#if devoured}}
+      <div class="col-md-9 text-center">
+        <pre>devoured:{{id}}. {{burger_name}}
         </pre>
       </div>
-      <div class="col-md-3 text-center">
-        <form class="buttons-size eatme-form">
-          <input input type="hidden" type="text" placeholder="Name of Burger">
-          <button type="submit" class="btn btn default">Devour it!</button>
-        </form>
-      </div>
-      {{/unless}}
+      {{> burgers/burger-devour id=id devoured=devoured}}
+      {{/if}}
       {{/each}}
     </div>
-  </div>
-  <div class="col-md-6 text=center" class="eatme">
-    {{#each burgers}}
-    {{#if devoured}}
-    {{> burgers/burger-block devoured=false}}
-    <div class>""col-md-9 text-center">
-      <pre>{{id}}. {{burger_name}}
-        </pre>
-    </div>
-    {{/if}}
-    {{/each}}
-  </div>
 
-
-  <h2>Add a burger</h2>
-  <form class="create-form">
-
-    <div class="form-group">
-      <label for="bu">Enter a burger you want to eat and click the "Add Burger" button</label>
-      <input type="text" id="bu" name="name">
-    </div>
-
-    {{!-- where <form class="create-form"> refers to --}}
-
-    {{!-- <div class="form-group">
-    <label for="devoured">devoured?</label><br>
-    <input type="radio" name="devoured" value="1" checked> devoured!<br>
-    <input type="radio" name="devoured" value="0"> Awake
-  </div> --}}
-
-    <button type="submit">Add Burger</button>
-  </form>
-  {{!-- To use a variable with handlebars, use {{}} (1:04:00, https://www.youtube.com/watch?v=L72fhGm1tfE--}}
-  {{!-- alternatively, you can write this.lunch --}}
+    <form class="create-form">
+      <div class="form-group">
+        <div class="form"></div>
+        <label for="bu">Enter a burger you want to eat and click the "Add Burger" button. Once you devour it, you will
+          have the opportunity to eat it again in the future.</label>
+        <input type="text" id="bu" name="name">
+      </div>
+      <button type="submit" class="btn btn-danger btn-lg">Add Burger</button>
+    </form>

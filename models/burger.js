@@ -3,22 +3,23 @@ module.exports = (sequelize, DataTypes) => {
   const Burger = sequelize.define('Burger', {
     id: {
       type: DataTypes.INTEGER,
+      autoIncrement: true,
       primaryKey: true,
-      validate: {
-        allowNull: false
-        }
+      // validate: {
+      //   allowNull: false
+      //   }
       },
       burger_name: {
         type: DataTypes.STRING,
-        validate: {
-          allowNull: false
-        }
+        // validate: {
+        //   allowNull: false
+        // }
       },
       devoured: {
         type: DataTypes.BOOLEAN,
-        validate: {
-          allowNull: false
-        }
+        // validate: {
+        //   allowNull: false
+        // }
       }   
       }, {});
 

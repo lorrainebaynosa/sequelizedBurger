@@ -53,8 +53,10 @@ app.set("view engine", "handlebars");
 // Routes
 // =============================================================
 var routes = require("./controllers/burgers_controllers");
+console.log('routes', routes)
+// app.use(routes);
+routes(app);
 
-app.use(routes);
 
 // Syncing our sequelize models and then starting our Express app
 // =============================================================
@@ -64,24 +66,6 @@ db.sequelize.sync({ force: true }).then(function() {
   });
 });
 
-
-
-// 1. from terminal bash, run 
-// 1) npm init to create package.json file; 
-// 2) npm install express express-handlebars mysql2 sequelize (creates necessary dependencies); 
-// 3) npx sequelize-cli init (sequelize creates the scaffolding in the folders (config, migrations, models, seeders) so we don't have to create them manually)
-// 4) npx sequelize-cli model:generate --name Burger --attributes id:integer,burger_name:string,devoured:boolean;
-// generates Model to interact with database
-// 5. In config.json file update development JSON object's to reflect info for connection between Node.js and mySQL database via mySQL Workbench
-// {
-//   "development": {
-//     "username": "root",
-//     "password": "lazyjack",
-//     "database": "burgers_db",
-//     "host": "127.0.0.1",
-//     "dialect": "mysql",
-//     "operatorsAliases": false
-//   },
 
 
 

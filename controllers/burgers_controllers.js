@@ -9,23 +9,22 @@
 // USING SEQUELIZE ACTIVITY: 
 var db = require("../models");
 
-// Create all our routes and set up logic within those routes where required.
-// router.get("/", function(req, res) {
-//   Burger.findAll(function(data) {
-//     var hbsObject = {
-//       burgers: data
-//     };
-//     console.log(hbsObject);
-//     res.render("index", hbsObject);
-//   });
-// });
-
 // USING SEQUELIZE ACTIVITY for router.get:
 module.exports = function (app) {
   // GET route for main index.handlebars
-  app.get("/api/burgers/", function (req, res) {
-    res.render("index");
+  app.get("/", function (req, res) {
+    console.log("REQ: " + req);
+    db.Burger.findAll({})
+    .then(function (dbBurger) {
+      var hbsObject = {
+        burgers: dbBurger
+      };
+      console.log('hbsObject', hbsObject.burgers);
+      res.render("index", {burgers: hbsObject.burgers});
+    });
+    // res.render("index");
   });
+
   // GET route for getting all of the burgers
   app.get("/api/burgers/", function (req, res) {
     db.Burger.findAll({})
@@ -38,30 +37,20 @@ module.exports = function (app) {
         // res.json(dbBurger);
       });
   });
-  // router.post("/api/burgers", function(req, res) {
-  //   Burger.create([
-  //     "burger_name", "devoured"
-  //   ], [
-  //     req.body.burger_name, req.body.devoured
-  //   ], function(result) {
-  //     // Send back the ID of the new burger
-  //     res.json({ id: result.insertId });
-  //   });
-  // });
-  // // where "burger_name", "devoured" refer to columns within the database db
-
-  // USING SEQUELIZE ACTIVITY for router.post:
-  // POST route for saving a new burger
-  app.post("/api/burgers", function (req, res) {
+  
+  // POST route for saving a new post
+  app.post("/api/burgers", function(req, res) {
     console.log(req.body);
     db.Burger.create({
       burger_name: req.body.burger_name,
-      devoured: req.body.devoured,
+      devoured: req.body.devoured
     })
-      .then(function (dbBurger) {
+      .then(function(dbBurger) {
         res.json(dbBurger);
       });
   });
+  // USING SEQUELIZE ACTIVITY for router.post:
+  // POST route for saving a new burger
   // router.put("/api/burgers/:id", function(req, res) {
   //   var condition = "id = " + req.params.id;
 
@@ -79,17 +68,19 @@ module.exports = function (app) {
   //   });
   // });
   // USING SEQUELIZE ACTIVITY for router.put:
-  app.put("/api/burgers", function (req, res) {
+  app.put("/api/burgers/:id", function (req, res) {
+    console.log('in server for api/burgers/:id, this is the req.body', req.body)
     db.Burger.update(req.body,
       {
         where: {
-          id: req.body.id
+          id: req.params.id
         }
       })
-      .then(function (dbBurger) {
+      .then(function(dbBurger) {
         res.json(dbBurger);
       });
   });
+
   // router.delete("/api/burgers/:id", function(req, res) {
   //   var condition = "id = " + req.params.id;
 
@@ -114,6 +105,30 @@ module.exports = function (app) {
       });
   });
 };
+
+// Create all our routes and set up logic within those routes where required.
+// router.get("/", function(req, res) {
+//   Burger.findAll(function(data) {
+//     var hbsObject = {
+//       burgers: data
+//     };
+//     console.log(hbsObject);
+//     res.render("index", hbsObject);
+//   });
+// });
+
+// router.post("/api/burgers", function(req, res) {
+  //   Burger.create([
+  //     "burger_name", "devoured"
+  //   ], [
+  //     req.body.burger_name, req.body.devoured
+  //   ], function(result) {
+  //     // Send back the ID of the new burger
+  //     res.json({ id: result.insertId });
+  //   });
+  // });
+  // // where "burger_name", "devoured" refer to columns within the database db
+
 
 // // Export routes for server.js to use.
 // module.exports = router;
