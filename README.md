@@ -7,29 +7,20 @@ Eat-Da-Burger! is a restaurant app that lets users input the names of burgers th
 
 
 
-* Whenever a user submits a burger's name, the app will display the burger on the left side of the page -- waiting to be devoured.
+* Whenever a user submits a burger's name, the app will display the burger on the left side of the page -- waiting to be devoured. Each burger in the waiting area also has a `Devour it!` button. When the user clicks it, the burger will move to the right side of the page.
 
 
-<img src="images/nodemon.jpg" width="800">
-![](images/nodemon.jpg)
-
-
-
-* Each burger in the waiting area also has a `Devour it!` button. When the user clicks it, the burger will move to the right side of the page.
+<img src="public/assets/images/devourme.jpg" width="800">
+![](public/assets/images/devourme.jpg)
 
 
 
-<img src="images/nodemon.jpg" width="800">
-![](images/nodemon.jpg)
+* If a user would like to eat the burger again in the future, user will click the "Eat Again in the future! button and the app will display the burger on the left side of the page -- waiting to be devoured. 
 
 
+<img src="public/assets/images/devoured.jpg" width="800">
+![](public/assets/images/devoured.jpg)
 
-* Each burger in the waiting area also has a `Devour it!` button. When the user clicks it, the burger will move to the right side of the page.
-
-
-
-<img src="images/nodemon.jpg" width="800">
-![](images/nodemon.jpg)
 
 
 
@@ -37,7 +28,7 @@ Eat-Da-Burger! is a restaurant app that lets users input the names of burgers th
 
 
 
-<img src="images/nodemon.jpg" width="800">
-![](images/nodemon.jpg)
+<img src="public/assets/images/database.jpg" width="800">
+![](public/assets/images/database.jpg)
 
 This app requires the following dependencies located in package.json in order to run: express, express-handlebars, mysql2, sequelize. In the config.json file, also update the password to reflect your own password and port for accessing the SQL database.
