@@ -25,6 +25,19 @@
 // *** Dependencies
 // =============================================================
 var express = require("express");
+// Hooking Project iwth JawsDB
+var mysql = require("mysql");
+var connection;
+if (process.env.JAWSDB_URL) {
+  connection = mysql.createConnection(process.env.JAWSDB_URL);
+} else {
+  connection = mysql.createConnection({
+    host: "localhost",
+    user: "root",
+    password: "lazyjack",
+    database: "burgers_db"
+  });
+};
 
 // Sets up the Express App
 // REVIEW OF CONCEPTS: 
@@ -66,6 +79,9 @@ db.sequelize.sync({ force: true }).then(function() {
   });
 });
 
+// Hooking Project iwth JawsDB
+connection.connect();
+module.exports = connection
 
 
 
