@@ -43,7 +43,7 @@ var mysql = require("mysql");
 // 1. Initialzies app
 // =============================================================
 var app = express();
-var PORT = process.env.PORT || 8080;
+var PORT = process.env.JAWSDB_URL|| 8080;
 
 // Requiring our models for syncing
 var db = require("./models");
