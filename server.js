@@ -27,7 +27,6 @@
 var express = require("express");
 // Hooking Project iwth JawsDB
 var mysql = require("mysql");
-var connection;
 // if (process.env.JAWSDB_URL) {
 //   connection = mysql.createConnection(process.env.JAWSDB_URL);
 // } else {
@@ -79,9 +78,7 @@ db.sequelize.sync({ force: true }).then(function() {
   });
 });
 
-// Hooking Project iwth JawsDB
-connection.connect();
-module.exports = connection
+
 
 
 
