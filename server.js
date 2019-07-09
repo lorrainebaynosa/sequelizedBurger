@@ -27,13 +27,24 @@
 var express = require("express");
 // Hooking Project iwth JawsDB
 var mysql = require("mysql");
+var connection;
+// if (process.env.JAWSDB_URL) {
+//   connection = mysql.createConnection(process.env.JAWSDB_URL);
+// } else {
+//   connection = mysql.createConnection({
+//     host: "localhost",
+//     user: "root",
+//     password: "lazyjack",
+//     database: "burgers_db"
+// //   });
+// };
 
 // Sets up the Express App
 // REVIEW OF CONCEPTS: 
 // 1. Initialzies app
 // =============================================================
 var app = express();
-var PORT = process.env.JAWSDB_URL || 8080;
+var PORT = process.env.PORT || 8080;
 
 // Requiring our models for syncing
 var db = require("./models");
